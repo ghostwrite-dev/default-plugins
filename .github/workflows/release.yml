@@ -15,9 +15,11 @@ jobs:
           path: default-plugins
       - uses: actions/checkout@v4
         with:
-          repository: ghostwrite-dev/plugin-build
-          ref: v1
-          path: plugin-build
+          repository: ghostwrite-dev/ghostwrite
+          ref: plugin-api-v1.0.1
+          path: ghostwrite
+          sparse-checkout: scripts
+          persist-credentials: false
       - name: Install Rust
         run: |
           rustup toolchain install 1.97.0 --profile minimal --target wasm32-wasip2

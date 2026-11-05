@@ -44,10 +44,10 @@ one when you open a file none of its plugins handles.
 
 ## Building
 
-With [plugin-build](https://github.com/ghostwrite-dev/plugin-build)'s `build.sh` beside it:
+With a Ghostwrite checkout beside it, for its [`scripts/plugin-build.sh`](https://github.com/ghostwrite-dev/ghostwrite/blob/plugin-api-v1.0.1/scripts/plugin-build.sh):
 
 ```sh
-git clone https://github.com/ghostwrite-dev/plugin-build ../plugin-build
+git clone --depth 1 --branch plugin-api-v1.0.1 https://github.com/ghostwrite-dev/ghostwrite ../ghostwrite
 rustup target add wasm32-wasip2
 ./build.sh            # or ./build.sh rust python
 ```
@@ -55,8 +55,8 @@ rustup target add wasm32-wasip2
 That makes `target/plugins/<name>` of each, which `:plugin install target/plugins/<name>` installs
 in Ghostwrite: its code, if it has a `Cargo.toml`, built for WebAssembly; the grammars its
 `grammars.txt` lists, downloaded and checked against their sha256; and the rest of its files as
-they are. Code builds against [`ghostwrite-plugin-api`](https://github.com/ghostwrite-dev/ghostwrite/tree/plugin-api-v1.0.0/crates/plugin-api)
-at the tag `plugin-api-v1.0.0`.
+they are. Code builds against [`ghostwrite-plugin-api`](https://github.com/ghostwrite-dev/ghostwrite/tree/plugin-api-v1.0.1/crates/plugin-api)
+at the tag `plugin-api-v1.0.1`.
 
 ## Releases
 

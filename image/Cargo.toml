@@ -1,4 +1,4 @@
-# Viewing images as a plugin, built for WebAssembly: ghostwrite-dev/plugin-build's build.sh.
+# Viewing images as a plugin, built for WebAssembly: Ghostwrite's scripts/plugin-build.sh.
 [package]
 name = "ghostwrite-image-plugin"
 version = "1.0.0"
@@ -9,7 +9,7 @@ publish = false
 crate-type = ["cdylib"]
 
 [dependencies]
-ghostwrite-plugin-api = { git = "https://github.com/ghostwrite-dev/ghostwrite", tag = "plugin-api-v1.0.0" }
+ghostwrite-plugin-api = { git = "https://github.com/ghostwrite-dev/ghostwrite", tag = "plugin-api-v1.0.1" }
 wit-bindgen = "0.57"
 image = { version = "0.25", default-features = false, features = ["bmp", "gif", "ico", "jpeg", "png", "tiff", "webp"] }
 
