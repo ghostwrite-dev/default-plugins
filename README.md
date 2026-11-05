@@ -65,9 +65,8 @@ A tag `v<X.Y.Z>` releases them all: the release has each one's folder as `<name>
 
 ## License
 
-MIT (see [LICENSE](LICENSE)), but for the text-object queries (`textobjects.scm`, and `textobjects-*.scm` in `c` and
-`javascript`). Those are helix's (`runtime/queries/*/textobjects.scm` at
-https://github.com/helix-editor/helix), with the files each inherits from put in it, and as such
-are under the Mozilla Public License 2.0 (https://mozilla.org/MPL/2.0/): see [LICENSE-MPL](LICENSE-MPL).
+Mozilla Public License 2.0: see [LICENSE](LICENSE). The text-object queries (`textobjects.scm`, and
+`textobjects-*.scm` in `c` and `javascript`) are helix's (`runtime/queries/*/textobjects.scm` at
+https://github.com/helix-editor/helix), with the files each inherits from put in it, under the same license.
 The highlight and injection queries are the grammars' own, unchanged, under their licenses, from
 the projects each `grammars.txt` names.
