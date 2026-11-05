@@ -30,6 +30,9 @@ jobs:
       - name: Build
         env:
           GRAMMARS_DIR: ${{ runner.temp }}/grammars
-        run: sh default-plugins/build.sh
+        # The cache brings back the folders it built last, among them any plugin since removed.
+        run: |
+          rm -rf default-plugins/target/plugins
+          sh default-plugins/build.sh
       - name: List what they're made of
         run: cd default-plugins/target/plugins && find . -type f -exec ls -l {} + | sort -k 9
