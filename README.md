@@ -55,8 +55,8 @@ rustup target add wasm32-wasip2
 That makes `target/plugins/<name>` of each, which `:plugin install target/plugins/<name>` installs
 in Ghostwrite: its code, if it has a `Cargo.toml`, built for WebAssembly; the grammars its
 `grammars.txt` lists, downloaded and checked against their sha256; and the rest of its files as
-they are. Code builds against [`ghostwrite-plugin-api`](https://github.com/ghostwrite-dev/ghostwrite/tree/plugin-api-v2.0.0/crates/plugin-api)
-at the tag `plugin-api-v2.0.0`.
+they are. Code builds against [`ghostwrite-plugin-api`](https://github.com/ghostwrite-dev/ghostwrite/tree/plugin-api-v1.0.0/crates/plugin-api)
+at the tag `plugin-api-v1.0.0`.
 
 ## Releases
 
