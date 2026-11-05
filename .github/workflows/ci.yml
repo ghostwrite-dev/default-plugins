@@ -1,0 +1,35 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: default-plugins
+      - uses: actions/checkout@v4
+        with:
+          repository: ghostwrite-dev/plugin-build
+          ref: v1
+          path: plugin-build
+      - name: Install Rust
+        run: |
+          rustup toolchain install 1.97.0 --profile minimal --target wasm32-wasip2
+          rustup default 1.97.0
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            default-plugins/target
+          key: cargo-${{ hashFiles('default-plugins/*/Cargo.lock') }}
+          restore-keys: cargo-
+      - name: Build
+        env:
+          GRAMMARS_DIR: ${{ runner.temp }}/grammars
+        run: sh default-plugins/build.sh
+      - name: List what they're made of
+        run: cd default-plugins/target/plugins && find . -type f -exec ls -l {} + | sort -k 9

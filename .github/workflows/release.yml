@@ -1,0 +1,57 @@
+name: release
+# On a tag v<X.Y.Z>, builds every plugin and releases them: a <name>.zip of each one's
+# folder, and SHA256SUMS.
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: default-plugins
+      - uses: actions/checkout@v4
+        with:
+          repository: ghostwrite-dev/plugin-build
+          ref: v1
+          path: plugin-build
+      - name: Install Rust
+        run: |
+          rustup toolchain install 1.97.0 --profile minimal --target wasm32-wasip2
+          rustup default 1.97.0
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            default-plugins/target
+          key: cargo-${{ hashFiles('default-plugins/*/Cargo.lock') }}
+          restore-keys: cargo-
+      - name: Build
+        env:
+          GRAMMARS_DIR: ${{ runner.temp }}/grammars
+        run: sh default-plugins/build.sh
+      - name: Zip
+        run: |
+          mkdir release
+          cd default-plugins/target/plugins
+          for plugin in */; do
+              plugin=${plugin%/}
+              find "$plugin" -exec touch -t 200001010000 {} +
+              find "$plugin" | sort | zip -X -q "$GITHUB_WORKSPACE/release/$plugin.zip" -@
+          done
+          cd "$GITHUB_WORKSPACE/release"
+          sha256sum *.zip > SHA256SUMS
+          ls -l
+          cat SHA256SUMS
+      - name: Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          cd release
+          notes=$(printf "The plugins that come with Ghostwrite, each a zip of its folder.\n\n\`\`\`\n%s\n\`\`\`\n" "$(cat SHA256SUMS)")
+          gh release create "$TAG" *.zip SHA256SUMS --repo "$GITHUB_REPOSITORY" --title "$TAG" --notes "$notes"
