@@ -1,0 +1,16 @@
+{
+  "plugins": [
+    {
+      "name": "typst",
+      "repo": "ghostwrite-dev/typst",
+      "description": "Typst, compiled as you type, its pages in a tab, and served by tinymist",
+      "extensions": ["typ"]
+    },
+    {
+      "name": "lean",
+      "repo": "ghostwrite-dev/lean",
+      "description": "Lean 4, served by lake serve, with the goals in a panel beside the file",
+      "extensions": ["lean"]
+    }
+  ]
+}
