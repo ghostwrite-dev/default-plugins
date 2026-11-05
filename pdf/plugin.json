@@ -1,9 +1,9 @@
 {
   "name": "pdf",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "api": 1,
   "code": "pdf.wasm",
-  "pages": true,
+  "views": [{ "name": "pages", "title": "Pages", "shows": "pages", "place": "tab" }],
   "only_pages": true,
   "extensions": ["pdf", "PDF"],
   "rules": "- A .pdf can be read, but can't have items about it. Put them in the file it's made from, if there is one.",

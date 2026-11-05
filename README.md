@@ -36,8 +36,8 @@ when you ask.
 
 | Plugin | What it adds | Install |
 | --- | --- | --- |
-| [`typst`](https://github.com/ghostwrite-dev/typst) | Typst: `.typ`, compiled as you type, its pages in a tab (`:preview` or `space v`, and back), colored by Typst's own syntax, and served by `tinymist` | `:plugin install ghostwrite-dev/typst` |
-| [`lean`](https://github.com/ghostwrite-dev/lean) | Lean 4: `.lean`, served by `lake serve`, with the goals in a panel beside the file (`space v` shows or hides it), colored by Lean's tokens, and its abbreviations (`\to` is `→`) | `:plugin install ghostwrite-dev/lean` |
+| [`typst`](https://github.com/ghostwrite-dev/typst) | Typst: `.typ`, compiled as you type, its pages in a view of their own, a tab (`space v` or `:preview`, and back), colored by Typst's own syntax, and served by `tinymist` | `:plugin install ghostwrite-dev/typst` |
+| [`lean`](https://github.com/ghostwrite-dev/lean) | Lean 4: `.lean`, served by `lake serve`, with the goals in a view beside the file (`space g` goes there, and back), colored by Lean's tokens, and its abbreviations (`\to` is `→`) | `:plugin install ghostwrite-dev/lean` |
 
 [`catalog.json`](catalog.json) lists them, with the files each handles, so Ghostwrite can suggest
 one when you open a file none of its plugins handles.

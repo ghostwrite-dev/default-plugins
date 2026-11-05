@@ -1,9 +1,9 @@
 {
   "name": "image",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "api": 1,
   "code": "image.wasm",
-  "pages": true,
+  "views": [{ "name": "pages", "title": "Pages", "shows": "pages", "place": "tab" }],
   "only_pages": true,
   "pages_at_own_size": true,
   "extensions": ["png", "PNG", "jpg", "JPG", "jpeg", "JPEG", "gif", "GIF", "webp", "WEBP", "bmp", "BMP", "tif", "TIF", "tiff", "TIFF", "ico", "ICO"],
